@@ -243,6 +243,7 @@ static void * deallocHasSwizzledKey = "deallocHasSwizzledKey";
     dispatch_semaphore_t semaphore = objc_getAssociatedObject(self, key);
     if (!semaphore) {
         semaphore = dispatch_semaphore_create(1);
+        objc_setAssociatedObject(self, key, semaphore, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return semaphore;
 }
